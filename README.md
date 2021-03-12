@@ -1,2 +1,2 @@
-# AEDs3---Ataques-Criptográficos
-Repositório para guardar o meu trabalho de Ataques Criptográficos
+# Trabalhos em LaTeX
+Repositório para guardar todos os meus trabalhos que eu fiz usando LaTeX
