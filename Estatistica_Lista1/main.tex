@@ -5,9 +5,21 @@
 \usepackage{hyperref}
 \usepackage[a4paper,top=3.5cm,left=3cm,right=3cm,bottom=2.5cm]{geometry}
 
+
+\newcounter{instn}
+\setcounter{instn}{1}
+\newcommand{\instnum}{\arabic{instn}}
+
+\newcommand{\myline}[1]{
+    \emph{\textbf{#1)}}
+    \addtocounter{instn}{1}
+}
+
 %configurando identação e separação de parágrafos
 \parindent 1.27cm
 \parskip   6pt
+
+\setlength\parindent{0pt}
 
 %configurando os hyperlinks
 \hypersetup{
@@ -18,56 +30,30 @@
 }
 
 %títulos,autor e data
-\title{\textbf{Um pouco sobre Ransomwares}}
+\title{\textbf{Lista 1 - Estatística}}
 \author{Gustavo Lopes Rodrigues}
-\date{Novembro de 2020}
+\date{2021}
 
 \begin{document}
     
     \maketitle
 
-    \textbf{\emph{Ransomware}} é um tipo de ataque criptográfico
-    que: ao ganhar acesso do computador da vítima, o software 
-    criptografa os dados da máquina. Para restaurar os dados comprometidos,
-    a usuário receberá instruções em como pagar um valor X
-    (geralmente em \textbf{criptomoedas}, pois elas deixam menos 
-    vestígios, logo, são mais difíceis de serem re-encontradas) 
-    para receber a chave de decriptografia e ganhar acesso novamente. 
-    Infelizmente, existe casos onde os sofredores não recebem seus dados, 
-    ou pior ainda, aqueles que fizeram o pagamento tem chance de
-    serem alvos novamente de futuros ataques.
+    \section*{Fórmulas usadas}
 
-    Existe diferentes formas na qual um Ransomware pode ganhar 
-    acesso a um computador:
+    Media aritmética \[ M_a = \frac{x_1 + x_2 + x_3 + .... x_n }{n} \]
 
-    \begin{itemize}
-        \item \textbf{\emph{Pishing}} - Ciberataques que envolve
-        o uso de e-mails, mensagem de celulares(SMS), onde o recipiente
-        é enganado a baixar um arquivo ou acessar um link. O nome "Pishing" é 
-        derivado da palavra "Fishing" que é a palavra em inglês para "pescar".
-        Ao ser "pescado", o hacker acaba de ganhar um ponto de acesso ao seu 
-        computador, assim instalado o Ransomware.
-    
-        \item \textbf{\emph{Exploit Kit}} - ao contrário do Pishing, em vez
-        de "pescar" a vítima, o Exploit Kit aproveita-se de falhas de programas
-        ou até de sistemas, para acessar os computadores de pessoas distraídas.
-        Um exemplo disso está no famoso ataque \href{https://olhardigital.com.br/especial/wannacry/}{\textbf{\emph{WannaCry}}} 
-        que infectou computadores ao redor do mundo, por causa de uma falha nos 
-        sistemas operacionais Windows.
-    \end{itemize}
+    Desvio Padrão \[ D_p = \sqrt{\frac{\sum_{i=1}^{n} (x_i - M_a)^2}{n-1}}\]
 
-    %Iniciando referências
-    \begin{thebibliography}{3}
-        
-        \bibitem{Ransomware} 
-        \url{https://www.csoonline.com/article/3236183/what-is-ransomware-how-it-works-and-how-to-remove-it.html}
-        
-        \bibitem{pishing} 
-        \url{https://br.malwarebytes.com/phishing/}
+    Coeficiente de Variação \[ C_v = \frac{D_p}{M_a} * 100\]
 
-        \bibitem{Ransomware2} 
-        \url{https://www.trendmicro.com/vinfo/us/security/definition/ransomware}
-        
-    \end{thebibliography}
+    \section*{Respostas}
+
+    \myline{\instnum}
+
+    \myline{\instnum}
+
+
+
+
 
 \end{document}
