@@ -4,7 +4,9 @@
 \usepackage[brazil]{babel}
 \usepackage{hyperref}
 \usepackage[a4paper,top=3.5cm,left=3cm,right=3cm,bottom=2.5cm]{geometry}
-
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+\usepgfplotslibrary{statistics}
 
 \newcounter{instn}
 \setcounter{instn}{1}
@@ -42,17 +44,222 @@
 
     Media aritmética \[ M_a = \frac{x_1 + x_2 + x_3 + .... x_n }{n} \]
 
-    Desvio Padrão \[ D_p = \sqrt{\frac{\sum_{i=1}^{n} (x_i - M_a)^2}{n-1}}\]
+    Variância \[ V = \frac{\sum_{i=1}^{n} (x_i - M_a)^2}{n-1}\]
+
+    Desvio Padrão \[ D_p = \sqrt{V}\]
 
     Coeficiente de Variação \[ C_v = \frac{D_p}{M_a} * 100\]
 
+    \newpage
+
     \section*{Respostas}
 
-    \myline{\instnum}
+    \myline{\instnum} \\ Media aritmética = \textbf{77.48}, Desvio Padrão = \textbf{8.17}, Coeficiente de variação \textbf{10.55}
+
+
+    Analisando os dados, percebe-se que a média aritmética é de 77.48, uma margem de erro de 8.17\% além 
+    de um coeficiente de variação igual a 10.55\%. Tais observações sugere que 
+    as cotações diárias das ações dessa empresa neste intervalo são homogêneas, pois não exite 
+    uma diferenciação muito grande entre os dados.
+
+    \myline{\instnum} \\ Media aritmética = \textbf{56.6}, Mediana \textbf{57.5}, Desvio Padrão = \textbf{5.66}
+
+
+    Examinando a pontuação de cada trabalhador, percebe-se que a media aritmética das notas é igual a 
+    56.6, a mediana é 57.5, e existe uma margem de erro entre os dados de 5.56. Os dados são homogêneos,
+    já que a variação entre os números não é grande(demonstrado pelo desvio padrão). Além disso, percebe-se que quatro 
+    trabalhadores estão com notas abaixo da média, enquanto que o restante mantém acima, com destaque a duas notas. que superaram
+    o desvio padrão. 
+
+
+    \myline{\instnum} (há fazer) 
+
+
+    \myline{\instnum} \\ Observando os resultados: o objetivo da indústria foi alcançada, pois eles conseguiram aumentar
+    a média de 59.6\% para 75.2\%, um aumento de 26\%, mantendo um grau de desvio baixo, 9\%, indicando que os dados
+    ainda possuem homogeneidade baixa.
+
+
+    \myline{\instnum} \\ a) Media aritmética = \textbf{816.6}, Mediana \textbf{800}, Desvio Padrão = \textbf{212.48}
+    \\ b) O mês com o valor mais alto está com um pouco menos de 2 desvios padrões.
+
+
+    \myline{\instnum} \\ a) Mediana = \textbf{59.61} \\ b) Q3 = \textbf{69.18}
+
+    c) Box Plot: 
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}
+                axis x line=left,
+                x axis line style={opacity=0},
+                xtick=\empty,
+              \addplot+[
+              boxplot prepared={
+                median=59.61,
+                upper quartile=69.18,
+                lower quartile=50.87,
+                upper whisker=85.18,
+                lower whisker=35.46
+              },
+              ] coordinates {};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+
+
 
     \myline{\instnum}
 
+    a) Por possuir um desvio padrão baixo(14.5\%), e não ter nenhum valor muito alto,
+    qualquer uma das medidas podem representar os dados
 
+    \begin{center}
+        \begin{tabular}{|c | c |} 
+        \hline
+        Media aritmética & 54.95 \\ 
+        \hline
+        Mediana & 56 \\ 
+        \hline
+        Moda & 40, 54, 60, 62 multimodal \\ 
+        \hline
+        Desvio Padrão & 14.09\% \\ 
+        \hline
+        Primeiro quartil & 45.0 \\ 
+        \hline
+        Terceiro quartil & 64.28 \\ 
+        \hline
+       \end{tabular}
+    \end{center}
+
+    \begin{itemize}
+        \item Um pouco mais da metade (\emph{55\%}) está com a nota acima da média 
+        \item Tem pelo menos 5 alunos que estão com notas preocupantes, pois estão muito abaixo da média 
+        \item Tem 2 alunos que se destacaram, um que teve um destaque ainda maior.
+    \end{itemize}
+
+    b) A melhor medida pode ser o quartil, ou a mediana, já que a maior moda é igual a 0,
+    e sem contar que todas as modas são muito dispersas quando comparado ao maior número de faltas (45)
+
+    \begin{center}
+        \begin{tabular}{|c | c |} 
+        \hline
+        Media aritmética & 4.25 \\ 
+        \hline
+        Mediana & 1.5 \\ 
+        \hline
+        Moda & 0, 1, 2, 3, 5 multimodal \\ 
+        \hline
+        Desvio Padrão & 9.86\% \\ 
+        \hline
+        Primeiro quartil & 0.25 \\ 
+        \hline
+        Terceiro quartil & 4.71 \\ 
+        \hline
+       \end{tabular}
+    \end{center}
+
+    Análse: Percebe-se que em grande parte o número de faltas entre os trabalhadores são bem próximos.
+    A única exceção é o maior número, que indica a presença de um "outlier", um número muito fora do padrão.
+
+    c) Neste caso, a melhor medida central pode ser a mediana ou a moda, pois muitas 
+    pessoas não leêm o jornal. 
+
+    \begin{center}
+        \begin{tabular}{|c | c |} 
+        \hline
+        Media aritmética & 3.1 \\ 
+        \hline
+        Mediana & 0 \\ 
+        \hline
+        Moda & 0, 1, 11, 12 multimodal \\ 
+        \hline
+        Desvio Padrão & 5.06\% \\ 
+        \hline
+        Primeiro quartil & 0 \\ 
+        \hline
+        Terceiro quartil & 7.14 \\ 
+        \hline
+       \end{tabular}
+    \end{center}
+
+    Examinando o número de exemplares, percebe-se que este jornal não é bem vendido, 
+    já que a mediana, e o valor com maior frequência nos dados é 0.
+
+    \newpage
+
+    d) Por se tratar de analisar pessoas com condição médica, o uso da Moda parece ser
+    apropriado, assim também como a média, por conta dos dados terem uma dispersão baixa
+
+    \begin{center}
+        \begin{tabular}{|c | c |} 
+        \hline
+        Media aritmética & 1.65 \\ 
+        \hline
+        Mediana & 1.615 \\ 
+        \hline
+        Moda & 1.52, 1.55, 1.6, 1.63, 1.65 multimodal \\ 
+        \hline
+        Desvio Padrão & 0.2\% \\ 
+        \hline
+        Primeiro quartil & 1.56 \\ 
+        \hline
+        Terceiro quartil & 1.68 \\ 
+        \hline
+       \end{tabular}
+    \end{center}
+
+    Ao fazer o estudo, percebe-se que esse grupo de dados é multimodal(possui várias)
+    modas, mais específico, as alturas: 1.52, 1.55, 1.6, 1.63, 1.65, foram as que mais apareceram.
+    A média encontrada foi de 1.65
+
+    Ainda como observação a mais, a altura 2.50 foi registrada, o que pode significar ser um possível
+    "outlier", um possível número falso, pois está muito acima da dispersão.
+
+
+    \myline{\instnum}
+
+    \begin{center}
+        \begin{tabular}{|c | c | c | c|} 
+        \hline
+        Valor faturado em milhões de Reais & $x_i$ & f & f\% \\ [3pt]
+        \hline
+        0,2|---0,6 & 6 & 87837 & 13,33\% \\ 
+        \hline
+        2 & 7 & 78 & 21,67\% \\
+        \hline
+        3 & 545 & 778 & 26,67\% \\
+        \hline
+        4 & 545 & 18744 & 20,00\% \\
+        \hline
+        5 & 88 & 788 & 10,00\% \\ 
+        \hline
+        5 & 88 & 788 & 8,33\% \\ 
+        \hline
+        \textbf{Total} & 88 & 788 & 100\% \\ [3pt]
+        \hline
+       \end{tabular}
+    \end{center}
+
+    \myline{\instnum} \\ Media aritmética = \textbf{82.75}, Mediana \textbf{82}, Desvio Padrão = \textbf{11.84}
+
+
+    \myline{\instnum}
+
+
+    \myline{\instnum} \\ a) Q1 = \textbf{2.30}, Q2 = \textbf{4}, Q3 = \textbf{5.53}
+    \\ b) 15, o maior valor é um "outlier", pois para ser considerado um é
+    preciso encontrar a faixa interquartil(FIQ), que é a difença entre o terceiro e 
+    primeiro quartil. A partir dela, podemos observar o intervalo entre:
+    
+    \begin{equation}
+        Q1 - 1.5 FIQ \rightarrow 2.30 + 1.5 (3.23) = 7.14
+    \end{equation}
+
+    \begin{equation}
+        Q3 + 1.5 FIQ \rightarrow 5.53 + 1.5 (3.23) = 10.37
+    \end{equation}
+
+    O número 15 como pode ser observado, é maior do que este intervalo. 
 
 
 
