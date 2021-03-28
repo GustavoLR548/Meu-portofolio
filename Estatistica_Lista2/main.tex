@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{hyperref}
+\usepackage[a4paper,top=3.5cm,left=3cm,right=3cm,bottom=2.5cm]{geometry}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+\usepgfplotslibrary{statistics}
+
+\newcounter{instn}
+\setcounter{instn}{1}
+\newcommand{\instnum}{\arabic{instn}}
+
+\newcommand{\myline}[1]{
+    \emph{\textbf{#1)}}
+    \addtocounter{instn}{1}
+}
+
+\newenvironment{question}[1]
+ {
+    \myline{\instnum} \\#1\\[1ex]
+    }
+    {
+ }
+
+ \newenvironment{formula}[1]
+ {
+    #1\\
+    }
+    {
+ }
+
+%configurando identação e separação de parágrafos
+\parindent 1.27cm
+\parskip   6pt
+
+\setlength\parindent{0pt}
+
+%configurando os hyperlinks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=green,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+%títulos,autor e data
+\title{\textbf{Lista 1 - Estatística}}
+\author{Gustavo Lopes Rodrigues}
+\date{2021}
+
+\begin{document}
+    
+    \maketitle
+
+    \section*{Fórmulas usadas}
+
+    \begin{formula}{Media aritmética}
+        \[ M_a = \frac{x_1 + x_2 + x_3 + .... x_n }{n} \]
+    \end{formula}
+
+    \newpage
+
+    \section*{Respostas}
+
+    \begin{question}{Media aritmética = \textbf{77.48}, Desvio Padrão = \textbf{8.17}, Coeficiente de variação \textbf{10.55}}
+        Analisando os dados, percebe-se que a média aritmética é de 77.48, uma margem de erro de 8.17\% além 
+        de um coeficiente de variação igual a 10.55\%. Tais observações sugere que 
+        as cotações diárias das ações dessa empresa neste intervalo são homogêneas, pois não exite 
+        uma diferenciação muito grande entre os dados.
+    \end{question}
+
+
+\end{document}
