@@ -325,19 +325,20 @@
         \begin{enumerate}[label={\textbf{\alph*)}}]
             \item 
             \begin{align*}
-                P(X < 700) = 0.8944 
+                P(X < 700) = F(1.25) \\ 
+                F(1.25) = 0.8944
             \end{align*}
             \begin{equation}
                 P(X > 700)  = 1 - P(X \leq 700) = 0.1056
             \end{equation}
             \item 
             \begin{equation}
-                P(X < 200) = 0.0018
+                P(X < 200) = F(-2.92) = 0.0018
             \end{equation}
             \item
             \begin{align*}
-                P(200 < X < 700) = P(X < 700) - (X \leq 200) \\ 
-                0.8944 - 0.0018 = 0.8926
+                P(200 < X < 700) = P(X < 700) - (X \leq 200) \\
+                F(1.25) - F(-2.92) = 0.8926
             \end{align*}
         \end{enumerate}
 
