@@ -7,6 +7,7 @@
 \usepackage{pgfplots}
 \usepackage{enumitem}
 \usepackage{amsmath}
+\usepackage{graphicx}
 \pgfplotsset{compat=1.8}
 \usepgfplotslibrary{statistics}
 
@@ -280,6 +281,14 @@
 
      %------Questao7--------------------------------------------------------------------------------%
 
+    \begin{figure}[ht]
+        \centering 
+        \includegraphics[scale=0.2]{tabela.png}
+        \caption{Distribuição usada como referência para resolução das próximas questões que envolvem binômio}
+    \end{figure}
+
+    \newpage
+
     \begin{question}
 
         \begin{enumerate}[label={\textbf{\alph*)}}]
@@ -313,6 +322,25 @@
 
     \begin{question}
         
+        \begin{enumerate}[label={\textbf{\alph*)}}]
+            \item 
+            \begin{align*}
+                P(X < 700) = 0.8944 
+            \end{align*}
+            \begin{equation}
+                P(X > 700)  = 1 - P(X <= 700) = 0.1056
+            \end{equation}
+            \item 
+            \begin{equation}
+                P(X < 200) = 0.0018
+            \end{equation}
+            \item
+            \begin{align*}
+                P(200 < X < 700) = P(X < 700) - (X <= 200) \\ 
+                0.8944 - 0.0018 = 0.8926
+            \end{align*}
+        \end{enumerate}
+
     \end{question}
 
      %------Questao9--------------------------------------------------------------------------------%
@@ -371,7 +399,20 @@
             \begin{equation}
                 e^{\frac{1}{100*200}} = 0.6065
             \end{equation}
-            \item 
+            \item Colocando dados 
+            \begin{center}
+                Binominal(N = 6, P = 0.6065) \\ 
+            \end{center}
+
+            \begin{align*}
+                P(X=4) =6C_4*0.6065^{4}*0.3935^{2}=0.31427 \\
+                P(X=5) =6C_5*0.6065^{5}*0.3935^{1}=0.19375 \\
+                P(X=6) =6C_6*0.6065^{6}*0.3935^{0}=0,04977 \\
+            \end{align*}
+
+            \begin{equation}
+                P(X>3) = 0.31427 + 0.19375 + 0,04977 = 0,5578
+            \end{equation}
 
         \end{enumerate}
     \end{question}
@@ -383,8 +424,12 @@
             P(X > 22) + P(X < 18) \\ 
             P(X > 22) = P(Z > \frac{22 - 21}{\sqrt{0.9}}) = P(Z > 1.0541) \\ 
             P(X < 18) = P(Z < \frac{18-21}{\sqrt{0.9}}) = P(Z < -3.1622) \\ 
-            P()
+            P(\text{não defeituosa}) = 0.86650 - 0.00043 = 0.8669 \\ 
+            P(\text{defeituosa}) = 1 - P(\text{não defeituosa}) = 0.137 \rightarrow 13.37\%
         \end{align*}
+
+        Ao implementar o novo processo, a proporção de itens defeituosos irá cair de 30\% 
+        para 13.7\%, portanto, recomenda-se fazer a troca.
     \end{question}
      %------Questao12--------------------------------------------------------------------------------%
 
@@ -500,7 +545,7 @@
         \begin{enumerate}[label={\textbf{\alph*)}}]
             \item        
             \begin{equation}
-                (\frac{6!}{0!(6-0)!} * 0.3^{0}*(1-0.3)^{6})*100 = 11.7649\%
+                (\frac{6!}{0!(6-0)!} * 0.3^{0}*(1-0.3)^{6})*100 = 11.765\%
             \end{equation}
             \item 
             \[
@@ -644,7 +689,11 @@
             \begin{equation}
                 \frac{e^{-4}*4^{0}}{0!} * 100 = 1.83\%
             \end{equation}
-            \item Item B faltando
+            \item 
+            \begin{equation}
+                P(X=3) = \frac{e^{-3}*3^{3}}{3!} = 0,0498
+            \end{equation}
+            ... Ainda há terminar
         \end{enumerate}
     \end{question}
 
@@ -663,10 +712,15 @@
                 P(X=2) = \frac{e^{-4}*4^{2}}{2!} = 0,1465 \\
             \end{align*}
             \begin{equation}
-                1 - (0.0183 + 0.0732 + 0.1465) = 0.7619
+                1 - (0.0183 + 0.0732 + 0.1465) = 0.7619\%
             \end{equation}
-            \item
-
+            \item  
+            \[
+                P(Y=0) = 81.975
+            \] 
+            \begin{equation}
+                81.975 * 80 = \text{6.568 dias}
+            \end{equation}
         \end{enumerate}
     \end{question}
 
@@ -674,11 +728,13 @@
 
     \begin{question}
         \begin{enumerate}[label={\textbf{\alph*)}}]
-            \item        
+            \item Considere que são 10 questões com a possibilidade de marcar apenas duas opções
+            logo 50\% de chance de marcar verdadeiro ou falso. Agora, é só pegar essa lógica e aplicar a uma permutação
             \begin{equation}
                 (\frac{1}{2})^{10} * \frac{10!}{5!*5!} = 0.2461
             \end{equation}
-            \item 
+            \item Neste caso, como temos mais de um caso(8 corretas, 9 corretas e 10 corretas), é preciso fazer para cada caso 
+            separado, e então fazer a soma de todos os casos.
             \[
                 (\frac{1}{2})^{10} * \frac{10!}{8!*2!} = 0,043945312
             \]
@@ -703,7 +759,10 @@
             \begin{equation}
                P(X=1) = \frac{e^{-20}*20^{1}}{1!} = 0.3935
             \end{equation}
-            \item Ainda há fazer
+            \item 
+            \begin{equation}
+                P(X>10) = e^{-1} = 0.3679
+             \end{equation}
         \end{enumerate}
     \end{question}
 
@@ -728,13 +787,6 @@
         \begin{enumerate}[label={\textbf{\alph*)}}]
             \item        
             \[
-                P(X=2) = \frac{e^{-2}*2^{2}}{2!}  
-            \]
-            \begin{equation}
-                P(X=2) = 0.2707
-            \end{equation}
-            \item        
-            \[
                 0.6^{5} = 0.07776
             \]
     
@@ -745,7 +797,18 @@
             \begin{equation}
                 1-(0.07776 + 0.2592) = 0.6630
             \end{equation}
-            \item ainda há fazer
+            \item        
+            \[
+                P(X=4) = \frac{4!}{4!(5-4)!} * (\frac{40}{100})^{4} * (1-\frac{40}{100})^{4-4}
+            \]
+    
+            \[
+                P(X=4) = 0.0256
+            \]
+    
+            \begin{equation}
+                1 - 0.0256 = 0.9744
+            \end{equation}
         \end{enumerate}
         
     \end{question}
@@ -851,13 +914,14 @@
 
      \begin{question}
         \begin{enumerate}[label={\textbf{\alph*)}}]
-            \item 
+            \item Considerando que são 4 meninas, e que a cada vez que é selecionado mais uma, sempre precisa 
+            levar que uma foi retirada anteriormente, podemos então fazer por meio de multiplicação:
             \begin{equation}
                 \frac{4}{7} * \frac{3}{6} * \frac{2}{5} = \frac{24}{210} \rightarrow \frac{4}{35} \text{  ou  } 0.11\%
             \end{equation}
-            \item 
+            \item Aplicando a mesma lógica da letra \textbf{a)}, podemos encontrar o resultado a partir de multiplicação.
             \begin{equation}
-                \frac{5}{13} * \frac{4}{12} * \frac{3}{11} = \frac{60}{1716} \rightarrow 0.0349
+                \frac{5}{13} * \frac{4}{12} * \frac{3}{11} = \frac{60}{1716} \rightarrow 0.0350
             \end{equation}
         \end{enumerate}
     \end{question}
