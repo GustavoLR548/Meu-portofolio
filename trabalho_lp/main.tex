@@ -1,0 +1,71 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage[a4paper,top=3.5cm,left=3cm,right=3cm,bottom=2.5cm]{geometry}
+
+%configurando identação e separação de parágrafos
+\parindent 1.27cm
+\parskip   6pt
+
+%configurando os hyperlinks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=green,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+%títulos,autor e data
+\title{\textbf{Um resumo para o trabalho de LP}}
+\author{Gustavo Lopes Rodrigues}
+\date{Abril de 2021}
+
+\begin{document}
+    
+    \maketitle
+
+    \begin{abstract}
+        O Artigo \emph{On Understanding Types,Data Abstraction, and Polymorphism}, busca fazer uma compreensão
+        dos termos: tipagem, abstração de dados e polimorfismo, que junto aos conhecimentos da teoria da tipagem,
+        busca criar um modelo para criação de linguagens de programação forte, com alto polimorfismo, utilizando o
+        cálculo $\lambda$. O nome desse módelo é \emph{FUN}.
+    \end{abstract}
+
+    \section{Secção 1}
+    \subsection{Sem tipo e com tipo}
+
+        Para começar o artigo, o autor em vez de ir pela definição diretamente, ele 
+        deu exemplos de linguagens sem tipagem e o processo de tipagem foi naturalmente
+        sendo incorporado.
+
+        Não tipagem significa ter uma tipagem só. Na memória do computador isso é representando por 
+        bit strings. Em LISP, são as \emph{S-expressions}. No Cálculo lambda, são as expressões lambda. Por fim
+        também tem os Sets em Set Theory. 
+
+        A ideia de possuir tipos foi naturalmente implementada, com a necessidade de possuir diferentes 
+        formatos com diferentes usos e diferentes comportamentos. Porém, ainda é muito díficil fazer uma distinção completa 
+        entre a organização de sem tipos e de fazer realmente uma linguagem com tipagem. Um exemplo disso seria ter uma função 
+        lambda que retorna booleano ou integer.
+
+    \subsection{Tipagem forte e fraca}
+
+        Uma maneira descrever tipos é comparando com uma armadura. Armaduras protegem o usuário de danos
+        exteriores. Em tipagem, a armadura protege os dados de serem usados de forma não desejadas ou não
+        intencionadas. Isso acontece, pois como objetos possuem certas tipagem, ele precisa seguir as 
+        funcionalidade da tal tipagem. O problema é que mesmo assim, durante compilação, pode acontecer de
+        essa regra não ser obdecida e causar muitos problemas. Uma solução para esse problema é a tipagem estática. 
+        
+        Tipagem estática significa que variáveis de um programa são definidas explicitamentes e então 
+        checados durante tempo de compilação. Isso é importante para a checagem de erros, melhoria em performance , garante 
+        uma estrutura a ser respeitada e de fácil leitura. Porém, existe uma outra tipo de tipagem, que garante maior 
+        flexibilidade, a tipagem forte. 
+
+        Tipagem forte são linguagens onde cada tipo de dado, são predefinidos como parte da linguagem
+
+
+
+
+\end{document}
