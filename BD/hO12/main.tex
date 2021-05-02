@@ -3,6 +3,11 @@
 \usetheme{Rochester}
 \usecolortheme{crane}
 \usefonttheme{professionalfonts}		
+\usepackage{xcolor}
+
+\pagecolor[rgb]{0.5,0.5,0.5}
+\color[rgb]{1,1,1}
+
 % para fontes matemáticas
 % Enconte mais temas e cores em http://www.hartwork.org/beamer-theme-matrix/ 
 % Veja também http://deic.uab.es/~iblanes/beamer_gallery/index.html
@@ -97,7 +102,7 @@
     \end{frame}
     % ----------------- NOVO SLIDE --------------------------------
 
-    \begin{frame}{Árvore}
+    \begin{frame}{Árvore não otimizada}
      
       \begin{center}
         \begin{tikzpicture}[
@@ -107,12 +112,12 @@
           ]
           %Nodes
           \node[operation]  (first)  at (0,0) {$\pi$ A.CPF, A.Nome, B.Nome};
-          \node[operation]  (second) at (0,-2) {$\bowtie$A.CPF=P.CPF};
-          \node[operation]  (third)  at (2,-4.5) {$\sigma$A.CPF=P.CPF};
+          \node[operation]  (second) at (0,-2) {$\sigma$ A.CPF = B.CPF $\wedge$ C.ValorPagar > 100 $\wedge$ B.CPF = C.CPF\_Cliente $\wedge$ D.Valor < 50 $\wedge$ A.CPF\_Supervisor = null $\wedge$ A.CPF = C.CPF\_Funcionario };
+          \node[operation]  (third)  at (2,-4.5) {$\times$};
           \node[table]      (tableD) at (2,-6.5) {D};
-          \node[operation]  (fourth) at (-2,-4.5){$\sigma$A.CPF=P.CPF};
+          \node[operation]  (fourth) at (-2,-4.5){$\times$};
           \node[table]      (tableC) at (0,-6.5) {C};
-          \node[operation]  (fifth)  at (-4,-6.5){$\sigma$A.CPF=B.CPF};
+          \node[operation]  (fifth)  at (-4,-6.5){$\times$};
           \node[table]      (tableA) at (-6,-8.5) {A};
           \node[table]      (tableB) at (-2,-8.5) {B};
           
@@ -158,7 +163,7 @@
   \end{frame}
   % ----------------- NOVO SLIDE --------------------------------
 
-  \begin{frame}{Árvore}
+  \begin{frame}{Árvore não otimizada}
    
     \begin{center}
       \begin{tikzpicture}[
@@ -168,12 +173,12 @@
         ]
         %Nodes
         \node[operation]  (first)  at (0,0) {$\pi$ A.CPF, A.Nome, B.Nome};
-        \node[operation]  (second) at (0,-2) {$\bowtie$A.CPF=P.CPF};
-        \node[operation]  (third)  at (2,-4.5) {$\sigma$A.CPF=P.CPF};
+        \node[operation]  (second) at (0,-2) {$\sigma$ A.Codigo = B.CodFilme $\wedge$ B.CodAtor = C.Codigo $\wedge$ A.Genero = 'Aventura' $\wedge$ A.Codigo = D.CodFilme $\wedge$ D.PrecoDiaria > 10 };
+        \node[operation]  (third)  at (2,-4.5) {$\times$};
         \node[table]      (tableD) at (2,-6.5) {D};
-        \node[operation]  (fourth) at (-2,-4.5){$\sigma$A.CPF=P.CPF};
+        \node[operation]  (fourth) at (-2,-4.5){$\times$};
         \node[table]      (tableC) at (0,-6.5) {C};
-        \node[operation]  (fifth)  at (-4,-6.5){$\sigma$A.CPF=P.CPF};
+        \node[operation]  (fifth)  at (-4,-6.5){$\times$};
         \node[table]      (tableA) at (-6,-8.5) {A};
         \node[table]      (tableB) at (-2,-8.5) {B};
         
@@ -195,18 +200,18 @@
 
   \begin{frame}{Query}
    
-      Em SQL
-      
-      \begin{flushleft}
-        SELECT A.CPF, A.Nome, B.Nome \\
-        FROM Funcionarios A, Clientes B, Aluguel C, Pagamentos D \\
-        WHERE A.CPF=B.CPF \\
-        AND C.ValorPagar>100 \\
-        AND B.CPF=C.CPF\_Cliente \\
-        AND D.Valor<50 \\
-        AND A.CPF\_Supervisor IS NULL \\
-        AND A.CPF=C.CPF\_Funcionario  \\
-      \end{flushleft}
+    Em SQL
+    
+    \begin{flushleft}
+      SELECT A.CPF, A.Nome, B.Nome \\
+      FROM Funcionarios A, Clientes B, Aluguel C, Pagamentos D \\
+      WHERE A.CPF=B.CPF \\
+      AND C.ValorPagar>100 \\
+      AND B.CPF=C.CPF\_Cliente \\
+      AND D.Valor<50 \\
+      AND A.CPF\_Supervisor IS NULL \\
+      AND A.CPF=C.CPF\_Funcionario  \\
+    \end{flushleft}
 
   \end{frame}
    % ----------------- NOVO SLIDE --------------------------------
@@ -214,12 +219,12 @@
   
     Em Algebra Relacional
     \begin{flushleft}
-      $\pi$ A.CPF, A.Nome, B.Nome $\sigma$ A.CPF = B.CPF $\wedge$ B.CPF = C.CPF\_Cliente $\wedge$ B.Sexo = 'M' $\wedge$ C.ValorPagar > 50 $\wedge$ A.CPF = D.CPF\_Supervisor ( ( ( $\rho$ A Funcionarios $\bowtie$ $\rho$ B Clientes ) $\bowtie$ $\rho$ C Aluguel ) $\bowtie$ $\rho$ D Funcionarios ) 
+      $\pi$ A.CPF, A.Nome, B.Nome $\sigma$ A.CPF = B.CPF $\wedge$ C.ValorPagar > 100 $\wedge$ B.CPF = C.CPF\_Cliente $\wedge$ D.Valor < 50 $\wedge$ A.CPF\_Supervisor = null $\wedge$ A.CPF = C.CPF\_Funcionario ( ( ( $\rho$ A Funcionarios $\bowtie$ $\rho$ B Clientes ) $\bowtie$ $\rho$ C Aluguel ) $\bowtie$ $\rho$ D Pagamentos ) 
     \end{flushleft}
   \end{frame}
   % ----------------- NOVO SLIDE --------------------------------
 
-  \begin{frame}{Árvore}
+  \begin{frame}{Árvore não otimizada}
    
     \begin{center}
       \begin{tikzpicture}[
@@ -229,7 +234,7 @@
         ]
         %Nodes
         \node[operation]  (first)  at (0,0) {$\pi$ A.CPF, A.Nome, B.Nome};
-        \node[operation]  (second) at (0,-2) {$\bowtie$A.CPF=P.CPF};
+        \node[operation]  (second) at (0,-2) {$\sigma$ A.CPF = B.CPF $\wedge$ C.ValorPagar > 100 $\wedge$ B.CPF = C.CPF\_Cliente $\wedge$ D.Valor < 50 $\wedge$ A.CPF\_Supervisor = null $\wedge$ A.CPF = C.CPF\_Funcionario };
         \node[operation]  (third)  at (2,-4.5) {$\sigma$A.CPF=P.CPF};
         \node[table]      (tableD) at (2,-6.5) {D};
         \node[operation]  (fourth) at (-2,-4.5){$\sigma$A.CPF=P.CPF};
@@ -252,6 +257,13 @@
     
   \end{frame}
 % ----------------- NOVO SLIDE --------------------------------
-
+\begin{frame}{Plano de execução}
+  
+  \begin{enumerate}
+    \item Teste1
+    \item Teste2
+    \item Teste3
+  \end{enumerate}
+\end{frame}
 % ----------------- FIM DO DOCUMENTO -----------------------------------------
 \end{document}
