@@ -1,0 +1,257 @@
+\documentclass[aspectratio=169]{beamer}	 	
+
+\usetheme{Rochester}
+\usecolortheme{crane}
+\usefonttheme{professionalfonts}		
+% para fontes matemáticas
+% Enconte mais temas e cores em http://www.hartwork.org/beamer-theme-matrix/ 
+% Veja também http://deic.uab.es/~iblanes/beamer_gallery/index.html
+
+% Customizações de Cores: fg significa cor do texto e bg é cor do fundo
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={Hands-On 12},
+	    pdfcreator={GLR},
+		pdfkeywords={HandsOn12}{LaTeX}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=black,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+
+% ---
+% PACOTES
+% ---
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+\usepackage[brazil]{babel}		% Idioma do documento
+\usepackage{color}			      % Controle das cores
+\usepackage[T1]{fontenc}		  % Selecao de codigos de fonte.
+\usepackage{graphicx}			    % Inclusão de gráficos
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{txfonts}			    % Fontes virtuais
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+% ---
+
+% --- Informações do documento ---
+\title{Hands-On 12}
+\author{Gustavo Lopes Rodrigues}
+% ---
+
+% ----------------- INÍCIO DO DOCUMENTO --------------------------------------
+\begin{document}
+
+    % ----------------- NOVO SLIDE --------------------------------
+    \begin{frame}
+
+    \titlepage
+
+    \end{frame}
+
+    %TABELA DE CONTEÚDO
+
+    \AtBeginSection[]
+    {
+    \begin{frame}
+      \frametitle{Conteúdo}
+    \tableofcontents[currentsection]
+    \end{frame}
+    }
+
+    % ----------------- NOVO SLIDE --------------------------------
+    \section{Query 1}
+
+    \begin{frame}{Query}
+     
+      Em SQL
+
+      \begin{flushleft}
+          SELECT A.CPF, A.Nome, B.Nome \\
+          FROM Funcionarios A, Clientes B, Aluguel C, Funcionarios D \\
+          WHERE A.CPF=B.CPF \\
+          AND B.CPF=C.CPF\_Cliente \\
+          AND B.Sexo='M' \\
+          AND C.ValorPagar>50 \\
+          AND A.CPF=D.CPF\_Supervisor \\
+      \end{flushleft}
+
+    \end{frame}
+    % ----------------- NOVO SLIDE --------------------------------
+
+    \begin{frame}{Query}
+  
+      Em Algebra Relacional
+      \begin{flushleft}
+        $\pi$ A.CPF, A.Nome, B.Nome $\sigma$ A.CPF = B.CPF $\wedge$ B.CPF = C.CPF\_Cliente $\wedge$ B.Sexo = 'M' $\wedge$ C.ValorPagar > 50 $\wedge$ A.CPF = D.CPF\_Supervisor ( ( ( $\rho$ A Funcionarios $\bowtie$ $\rho$ B Clientes ) $\bowtie$ $\rho$ C Aluguel ) $\bowtie$ $\rho$ D Funcionarios ) 
+      \end{flushleft}
+    \end{frame}
+    % ----------------- NOVO SLIDE --------------------------------
+
+    \begin{frame}{Árvore}
+     
+      \begin{center}
+        \begin{tikzpicture}[
+          scale=0.5, transform shape,
+          operation/.style={very thick, minimum size=7mm},
+          table/.style={rectangle, draw=black, minimum size=5mm},
+          ]
+          %Nodes
+          \node[operation]  (first)  at (0,0) {$\pi$ A.CPF, A.Nome, B.Nome};
+          \node[operation]  (second) at (0,-2) {$\bowtie$A.CPF=P.CPF};
+          \node[operation]  (third)  at (2,-4.5) {$\sigma$A.CPF=P.CPF};
+          \node[table]      (tableD) at (2,-6.5) {D};
+          \node[operation]  (fourth) at (-2,-4.5){$\sigma$A.CPF=P.CPF};
+          \node[table]      (tableC) at (0,-6.5) {C};
+          \node[operation]  (fifth)  at (-4,-6.5){$\sigma$A.CPF=B.CPF};
+          \node[table]      (tableA) at (-6,-8.5) {A};
+          \node[table]      (tableB) at (-2,-8.5) {B};
+          
+          %Lines
+          \draw[-] (first.south) -- (second.north);
+          \draw[-] (second.south) -- (third.north);
+          \draw[-] (third.south) -- (tableD.north);
+          \draw[-] (second.south) -- (fourth.north);
+          \draw[-] (fourth.south) -- (tableC.north);
+          \draw[-] (fourth.south) -- (fifth.north);
+          \draw[-] (fifth.south) -- (tableA.north);
+          \draw[-] (fifth.south) -- (tableB.north);
+          \end{tikzpicture}
+      \end{center}
+
+  \end{frame}
+  % ----------------- NOVO SLIDE --------------------------------
+
+  \section{Query 2}
+
+  \begin{frame}{Query}
+  
+    Em SQL
+
+    \begin{flushleft}
+      SELECT A.Nome, C.Nome \\
+      FROM Filmes A, AtoresEmFilmes B, Atores C, Midias D \\
+      WHERE A.Codigo=B.CodFilme \\
+      AND B.CodAtor=C.Codigo \\
+      AND A.Genero="Aventura" \\
+      AND A.Codigo=D.CodFilme \\
+      AND D.PrecoDiaria>10 \\
+    \end{flushleft}
+
+  \end{frame}
+  % ----------------- NOVO SLIDE --------------------------------
+  \begin{frame}{Query}
+  
+    Em Algebra Relacional
+    \begin{flushleft}
+      $\pi$ A.Nome, C.Nome $\sigma$ A.Codigo = B.CodFilme $\wedge$ B.CodAtor = C.Codigo $\wedge$ A.Genero = 'Aventura' $\wedge$ A.Codigo = D.CodFilme $\wedge$ D.PrecoDiaria > 10 ( ( ( $\rho$ A Filmes $\bowtie$ $\rho$ B AtoresEmFilmes ) $\bowtie$ $\rho$ C Atores ) $\bowtie$ $\rho$ D Midias ) 
+    \end{flushleft}
+  \end{frame}
+  % ----------------- NOVO SLIDE --------------------------------
+
+  \begin{frame}{Árvore}
+   
+    \begin{center}
+      \begin{tikzpicture}[
+        scale=0.5, transform shape,
+        operation/.style={very thick, minimum size=7mm},
+        table/.style={rectangle, draw=black, minimum size=5mm},
+        ]
+        %Nodes
+        \node[operation]  (first)  at (0,0) {$\pi$ A.CPF, A.Nome, B.Nome};
+        \node[operation]  (second) at (0,-2) {$\bowtie$A.CPF=P.CPF};
+        \node[operation]  (third)  at (2,-4.5) {$\sigma$A.CPF=P.CPF};
+        \node[table]      (tableD) at (2,-6.5) {D};
+        \node[operation]  (fourth) at (-2,-4.5){$\sigma$A.CPF=P.CPF};
+        \node[table]      (tableC) at (0,-6.5) {C};
+        \node[operation]  (fifth)  at (-4,-6.5){$\sigma$A.CPF=P.CPF};
+        \node[table]      (tableA) at (-6,-8.5) {A};
+        \node[table]      (tableB) at (-2,-8.5) {B};
+        
+        %Lines
+        \draw[-] (first.south) -- (second.north);
+        \draw[-] (second.south) -- (third.north);
+        \draw[-] (third.south) -- (tableD.north);
+        \draw[-] (second.south) -- (fourth.north);
+        \draw[-] (fourth.south) -- (tableC.north);
+        \draw[-] (fourth.south) -- (fifth.north);
+        \draw[-] (fifth.south) -- (tableA.north);
+        \draw[-] (fifth.south) -- (tableB.north);
+        \end{tikzpicture}
+    \end{center}
+
+  \end{frame}
+% ----------------- NOVO SLIDE --------------------------------
+  \section{Query 3}
+
+  \begin{frame}{Query}
+   
+      Em SQL
+      
+      \begin{flushleft}
+        SELECT A.CPF, A.Nome, B.Nome \\
+        FROM Funcionarios A, Clientes B, Aluguel C, Pagamentos D \\
+        WHERE A.CPF=B.CPF \\
+        AND C.ValorPagar>100 \\
+        AND B.CPF=C.CPF\_Cliente \\
+        AND D.Valor<50 \\
+        AND A.CPF\_Supervisor IS NULL \\
+        AND A.CPF=C.CPF\_Funcionario  \\
+      \end{flushleft}
+
+  \end{frame}
+   % ----------------- NOVO SLIDE --------------------------------
+  \begin{frame}{Query}
+  
+    Em Algebra Relacional
+    \begin{flushleft}
+      $\pi$ A.CPF, A.Nome, B.Nome $\sigma$ A.CPF = B.CPF $\wedge$ B.CPF = C.CPF\_Cliente $\wedge$ B.Sexo = 'M' $\wedge$ C.ValorPagar > 50 $\wedge$ A.CPF = D.CPF\_Supervisor ( ( ( $\rho$ A Funcionarios $\bowtie$ $\rho$ B Clientes ) $\bowtie$ $\rho$ C Aluguel ) $\bowtie$ $\rho$ D Funcionarios ) 
+    \end{flushleft}
+  \end{frame}
+  % ----------------- NOVO SLIDE --------------------------------
+
+  \begin{frame}{Árvore}
+   
+    \begin{center}
+      \begin{tikzpicture}[
+        scale=0.5, transform shape,
+        operation/.style={very thick, minimum size=7mm},
+        table/.style={rectangle, draw=black, minimum size=5mm},
+        ]
+        %Nodes
+        \node[operation]  (first)  at (0,0) {$\pi$ A.CPF, A.Nome, B.Nome};
+        \node[operation]  (second) at (0,-2) {$\bowtie$A.CPF=P.CPF};
+        \node[operation]  (third)  at (2,-4.5) {$\sigma$A.CPF=P.CPF};
+        \node[table]      (tableD) at (2,-6.5) {D};
+        \node[operation]  (fourth) at (-2,-4.5){$\sigma$A.CPF=P.CPF};
+        \node[table]      (tableC) at (0,-6.5) {C};
+        \node[operation]  (fifth)  at (-4,-6.5){$\sigma$A.CPF=P.CPF};
+        \node[table]      (tableA) at (-6,-8.5) {A};
+        \node[table]      (tableB) at (-2,-8.5) {B};
+        
+        %Lines
+        \draw[-] (first.south) -- (second.north);
+        \draw[-] (second.south) -- (third.north);
+        \draw[-] (third.south) -- (tableD.north);
+        \draw[-] (second.south) -- (fourth.north);
+        \draw[-] (fourth.south) -- (tableC.north);
+        \draw[-] (fourth.south) -- (fifth.north);
+        \draw[-] (fifth.south) -- (tableA.north);
+        \draw[-] (fifth.south) -- (tableB.north);
+        \end{tikzpicture}
+    \end{center}
+    
+  \end{frame}
+% ----------------- NOVO SLIDE --------------------------------
+
+% ----------------- FIM DO DOCUMENTO -----------------------------------------
+\end{document}
