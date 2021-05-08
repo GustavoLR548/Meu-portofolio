@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{hyperref}
+\usepackage[a4paper,top=3.5cm,left=3cm,right=3cm,bottom=2.5cm]{geometry}
+\usepackage{pgfplots}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\pgfplotsset{compat=1.8}
+\usepgfplotslibrary{statistics}
+
+\newcounter{instn}
+\setcounter{instn}{1}
+\newcommand{\instnum}{\arabic{instn}}
+
+\newcommand{\myline}[1]{
+    \emph{\textbf{#1)}}
+    \addtocounter{instn}{1}
+}
+
+\newenvironment{question}
+ {
+    \myline{\instnum} 
+    }
+    {
+ }
+
+%configurando identação e separação de parágrafos
+\parindent 1.27cm
+\parskip   6pt
+
+\setlength\parindent{0pt}
+
+%configurando os hyperlinks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=green,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+%títulos,autor e data
+\title{\textbf{Lista 3 - Estatística}}
+\author{Gustavo Lopes Rodrigues}
+\date{2021}
+
+\begin{document}
+    
+    \maketitle
+
+    \section*{Respostas}
+
+    %------Questao1--------------------------------------------------------------------------------%
+
+    \begin{question}
+       
+        \begin{enumerate}[label={\textbf{\alph*)}}]
+            \item 
+            Amostragem é uma técnica de seleção de uma amostra ou um subconjunto de elementos em uma determinada
+            população que possibilita o estudo das características de uma população.
+            \item 
+            Amostragem Aleatória é uma amostragem pelo qual cada elemento de tamanho igual da
+            população tem a mesma chance de ser selecionado no estudo que vai ser realizada.
+            \item 
+            Amostra aleatória simples: Todas as amostras de mesmo tamanho são igualmente prováveis.
+            Amostra sistemática: Combina um processo aleatório com um processo sistémico. Percorre toda população.
+            \item 
+            Cidades urbanas e Interior e estudantes estudando no setor pública e estudante de escolas privadas
+            \item 
+            50 casa distribuido em 5 ruas, sorteando 2 segunda casa em cada rua
+            30 estudante de faculdade de relações internacionais do quinto período distribuído em 3 salas, sorteando as duas
+            primeiro salas
+        \end{enumerate}
+    \end{question}
+
+\end{document}
