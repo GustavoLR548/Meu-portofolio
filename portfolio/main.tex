@@ -1,4 +1,5 @@
 \documentclass[10pt,a4paper,ragged2e]{altacv}
+\usepackage{multicol}
 
 %% AltaCV uses the fontawesome and academicon fonts
 %% and packages.
@@ -75,7 +76,7 @@
 
 
 \cvsection[page1sidebar]{Educação}
-\cvevent{Pontifícia Universidade Católica de Minas Gerais}{Bacharelado em Ciência da Computação}{ Fev 2019 -- Dez 2022}{Belo Horizonte}
+\cvevent{Pontifícia Universidade Católica de Minas Gerais}{\href{https://web.sistemas.pucminas.br/SGA.Administrativo/CNC/ConsultaPublica/Index?CodigoVerificacao=338.338.721bb408d1a2&NomeCompletoDiplomado=&ExibirApenasConsulta=true}{Bacharelado em Ciência da Computação}}{ Fev 2019 -- Jul 2023}{Belo Horizonte}
 %\begin{itemize}
 %\item Computer Science Major GPA: 3.62/4.0\\
 %\item Full year of study at NYU Stern School of Business
@@ -126,30 +127,56 @@ CRUD e Ordenação externa.
 %\divider
 \cvsection{Habilidades}
 
-{\Large \textbf{Básico}\par\par}
-\vspace{5pt}
+
+\begin{multicols}{2}
+[
+\textbf{ \Large Básico}
+\vspace{-7pt}
+]
 \begin{itemize}
     \item Go
-    \item Shell script
+    \item Unity
+    \item Unreal Engine
 \end{itemize}
+\begin{itemize}
+    \item FFMPEG
+    \item C\#
+    \item Excel
+\end{itemize}
+\end{multicols}
 
-{\Large \textbf{Intermediário}\par\par}
-\vspace{5pt}
+\begin{multicols}{2}
+[
+\textbf{ \Large Intermediário}
+\vspace{-7pt}
+]
 \begin{itemize}
     \item C / C++
     \item Github 
     \item Git 
+\end{itemize}
+\begin{itemize}
+    \item Typescript / Javascript
+    \item HTML / CSS
     \item Linux
 \end{itemize}
+\end{multicols}
 
-{\Large \textbf{Avançado}\par\par}
-\vspace{5pt}
+\begin{multicols}{2}
+[
+\textbf{ \Large Avançado}
+\vspace{-7pt}
+]
 \begin{itemize}
-\item Java
-\item Flutter
-\item Latex
-\item Python
-\end{itemize} 
+    \item Java
+    \item Flutter
+    \item Latex
+\end{itemize}
+\begin{itemize}
+    \item Python
+    \item Godot 4.0 / GDScript 2
+\end{itemize}
+\end{multicols}
 
 
 % \cvevent{Product Engineer}{Google}{23 June 1999 -- 2001}{Palo Alto, CA}
